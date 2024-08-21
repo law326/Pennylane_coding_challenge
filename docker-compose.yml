@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:16.4-bullseye
+    ports:
+      - 5432:5432
+    volumes:
+      - /private/var/docker/var-lib-recipes-hub:/var/lib/postgresql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+
+  web:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    environment:
+      - RAILS_ENV=development
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=recipes_hub_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASS=password

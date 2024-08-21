@@ -1,0 +1,20 @@
+
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: <%= ENV.fetch("POSTGRES_USER") %>
+  password: <%= ENV.fetch("POSTGRES_PASS") %>
+  host: <%= ENV.fetch("POSTGRES_HOST") %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("POSTGRES_DB") %>_development
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("POSTGRES_DB") %>_test
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("POSTGRES_DB") %>
