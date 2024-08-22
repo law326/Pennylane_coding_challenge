@@ -1,27 +1,34 @@
-<h1>Recipes Hub</h1>
 
-<p>Search recipes by ingredients:
-  <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", name: nil %>
-  <% end %>
-</p>
+<div class="container">
+  <h1>Recipes Hub</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Cook Time</th>
-    <th>Category</th>
-    <th>Ingredients</th>
-  </tr>
-  <% @recipes.each do |recipe| %>
-    <tr>
-      <td><%= recipe.title %></td>
-      <td><%= recipe.cook_time %></td>
-      <td><%= recipe.category %></td>
-      <td><%= recipe.ingredients.join(', ') %></td>
-    </tr>
-  <% end %>
-</table>
+  <p>Search recipes by ingredients:
+    <%= form_tag recipes_path, method: :get do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", name: nil %>
+    <% end %>
+  </p>
 
-<%= paginate @recipes %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Cook Time</th>
+        <th scope="col">Category</th>
+        <th scope="col">Ingredients</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipes.each do |recipe| %>
+        <tr>
+          <td scope="row"><%= recipe.title %></td>
+          <td><%= recipe.cook_time %></td>
+          <td><%= recipe.category %></td>
+          <td><%= recipe.ingredients.join(', ') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @recipes %>
+</div>

@@ -15,6 +15,7 @@ class Recipe < ApplicationRecord
         query: {
           multi_match: {
             query: query,
+            operator: 'and',
             fields: ['ingredients'],
             fuzziness: 'AUTO'
           }
