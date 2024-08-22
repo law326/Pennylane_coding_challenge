@@ -9,12 +9,29 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
 
+  elasticsearch:
+    image: elasticsearch:8.15.0
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - http.cors.allow-origin=http://localhost:8080
+      - http.cors.enabled=true
+  elasticvue:
+    image: cars10/elasticvue:latest
+    ports:
+      - 8080:8080
+    environment:
+      - ELASTICVUE_CLUSTERS='[{"uri":"http://elasticsearch:9200","name":"Elasticsearch"}]'
+
   web:
     build: .
     ports:
-      - 8080:8080
+      - 3000:3000
     depends_on:
       - db
+      - elasticsearch
     volumes:
       - .:/app
     environment:
@@ -23,3 +40,4 @@ services:
       - POSTGRES_DB=recipes_hub_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASS=password
+      - ELASTICSEARCH_URL=http://elasticsearch:9200

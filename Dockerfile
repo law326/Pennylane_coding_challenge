@@ -12,4 +12,4 @@ EXPOSE 3000
 
 # ENTRYPOINT ["./bin/start"]
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "8080"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
