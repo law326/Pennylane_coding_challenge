@@ -18,12 +18,6 @@ services:
       - xpack.security.enabled=false
       - http.cors.allow-origin=http://localhost:8080
       - http.cors.enabled=true
-  elasticvue:
-    image: cars10/elasticvue:latest
-    ports:
-      - 8080:8080
-    environment:
-      - ELASTICVUE_CLUSTERS='[{"uri":"http://elasticsearch:9200","name":"Elasticsearch"}]'
 
   web:
     build: .
