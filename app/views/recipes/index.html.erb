@@ -2,15 +2,19 @@
 <div class="container">
   <h1>Recipes Hub</h1>
 
-  <p>Search recipes by ingredients:
-    <%= form_tag recipes_path, method: :get do %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", name: nil %>
+  <p>Search recipes by ingredients (you can enter multiple ingredients separated by whitespace):</p>
+    <%= form_tag recipes_path, method: :get, class: 'row g-2' do %>
+      <div class="col-auto">
+        <%= text_field_tag :search, params[:search], class: 'form-control' %>
+      </div>
+      <div class="col-auto">
+        <%= submit_tag "Search", name: nil, class: 'btn btn-primary' %>
+      </div>
     <% end %>
   </p>
 
   <table class="table">
-    <thead>
+    <thead class="table-light">
       <tr>
         <th scope="col">Title</th>
         <th scope="col">Cook Time</th>
@@ -21,7 +25,7 @@
     <tbody>
       <% @recipes.each do |recipe| %>
         <tr>
-          <td scope="row"><%= recipe.title %></td>
+          <th scope="row"><%= recipe.title %></td>
           <td><%= recipe.cook_time %></td>
           <td><%= recipe.category %></td>
           <td><%= recipe.ingredients.join(', ') %></td>

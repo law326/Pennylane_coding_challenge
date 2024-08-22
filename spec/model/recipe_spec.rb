@@ -28,5 +28,11 @@ RSpec.describe Recipe, elasticsearch: true, type: :model do
 
       it { is_expected.to contain_exactly(have_attributes(title: 'Recipe 3')) }
     end
+
+    context 'when no results are found' do
+      let(:search_param) { 'chocolate' }
+
+      it { is_expected.to be_empty }
+    end
   end
 end
