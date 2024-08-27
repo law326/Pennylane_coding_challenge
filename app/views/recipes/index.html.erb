@@ -28,7 +28,7 @@
           <th scope="row"><%= recipe.title %></td>
           <td><%= recipe.cook_time %></td>
           <td><%= recipe.category %></td>
-          <td><%= recipe.ingredients.join(', ') %></td>
+          <td><%= JSON.parse(recipe.ingredients).join(', ') %></td>
         </tr>
       <% end %>
     </tbody>

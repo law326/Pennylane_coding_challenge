@@ -6,7 +6,7 @@ class CreateRecipes < ActiveRecord::Migration[7.0]
       t.integer :prep_time
       t.string :category
       t.string :image
-      t.string :ingredients, array: true, default: []
+      t.string :ingredients
 
       t.timestamps
     end

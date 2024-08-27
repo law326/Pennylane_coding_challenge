@@ -24,7 +24,5 @@ class RecipesImporter
       )
     end
     Recipe.import(recipes)
-    Recipe.__elasticsearch__.create_index!
-    Recipe.__elasticsearch__.import
   end
 end

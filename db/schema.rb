@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_21_101624) do
     t.integer "prep_time"
     t.string "category"
     t.string "image"
-    t.string "ingredients", default: [], array: true
+    t.string "ingredients"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

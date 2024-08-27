@@ -9,8 +9,6 @@ gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'activerecord-import'
 gem 'kaminari'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
 gem 'turbo-rails'
 gem 'bigdecimal'
 gem 'bootsnap', require: false
@@ -28,3 +26,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
