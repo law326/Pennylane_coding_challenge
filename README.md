@@ -22,6 +22,5 @@ You can access the app at http://localhost:3000 once the servers are up.
 
 ## Run tests
 
+    $ docker-compose run --rm web bundle exec rake db:test:prepare
     $ docker-compose run --rm web bundle exec rspec
-
-NOTE: If you receive error `Failed to open TCP connection to elasticsearch:9200 (Connection refused - connect(2) for "elasticsearch" port 9200)`, try again after few seconds. This is because the test is dependent on Elasticsearch being up and running and sometimes it might take a little bit longer than the web container to start.
